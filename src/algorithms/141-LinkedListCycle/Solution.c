@@ -17,5 +17,16 @@
  * };
  */
 bool hasCycle(struct ListNode *head) {
-    
+	/* Solution using two pointers without using extra spaces */
+    if(head == NULL) return false;
+        struct ListNode *first = head;
+        struct ListNode *second = head;
+
+        while(first != NULL){
+            if(second == NULL || second->next == NULL) return false;
+            first = first->next;
+            second = second->next->next;
+            if(first == second) return true;
+        }
+        return false;
 }
